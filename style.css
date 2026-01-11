@@ -115,21 +115,43 @@ a:hover {
   opacity: 0.7;
 }
 
-/* STILE MOBILE (semplice) */
+/* ======================== */
+/* RESPONSIVE / MOBILE STYLE */
+/* ======================== */
 @media (max-width: 600px) {
+
   .container {
     padding: 60px 15px;
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 14px;
   }
 
   .sections a {
     font-size: 13px;
+    margin-bottom: 10px;
   }
 
   .image {
-    margin: 80px 0;
+    margin: 60px 0;
+  }
+
+  .image::before {
+    width: 40px; /* linea più corta su mobile */
+    margin-bottom: 15px;
+  }
+
+  .footer {
+    font-size: 11px;
+    margin-top: 80px;
   }
 }
