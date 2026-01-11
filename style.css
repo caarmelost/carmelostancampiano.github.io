@@ -1,16 +1,19 @@
+/* RESET BASE */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* BODY GENERALE */
 body {
-  background: #0b0b0b;
-  color: #d6d6d6;
+  background: #0b0b0b; /* nero profondo */
+  color: #d6d6d6;     /* testo secondario grigio */
   font-family: Helvetica, Arial, sans-serif;
   line-height: 1.8;
 }
 
+/* CONTAINER PRINCIPALE */
 .container {
   max-width: 820px;
   margin: 0 auto;
@@ -23,9 +26,17 @@ h1 {
   font-weight: normal;
   letter-spacing: 2px;
   margin-bottom: 30px;
-  color: #f5e400;
+  color: #f5e400; /* giallo */
 }
 
+h2 {
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  color: #f5e400; /* giallo */
+}
+
+/* PARAGRAFI */
 p {
   font-size: 15px;
   max-width: 600px;
@@ -40,7 +51,7 @@ p {
   margin: 60px 0;
 }
 
-/* SEZIONI IN COLONNA */
+/* NAV / SEZIONI IN COLONNA */
 .sections {
   display: flex;
   flex-direction: column;
@@ -65,4 +76,60 @@ p {
   margin-top: 120px;
   font-size: 12px;
   opacity: 0.4;
+}
+
+/* CONTENITORE IMMAGINI */
+.image {
+  margin: 120px 0;
+}
+
+/* IMMAGINI */
+.image img {
+  width: 100%;
+  display: block;
+}
+
+/* VIDEO */
+video {
+  width: 100%;
+  display: block;
+}
+
+/* MICRO-EFFETTO: linea prima del contenuto video/immagine */
+.image::before {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 60px;
+  background: #f5e400;
+  margin-bottom: 20px;
+}
+
+/* LINK GENERALE */
+a {
+  color: #f5e400;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* STILE MOBILE (semplice) */
+@media (max-width: 600px) {
+  .container {
+    padding: 60px 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .sections a {
+    font-size: 13px;
+  }
+
+  .image {
+    margin: 80px 0;
+  }
 }
