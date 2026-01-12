@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>helya</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -10,7 +11,7 @@
 <div class="container">
 
   <h1>helya</h1>
-
+  
   <div class="separator"></div>
 
   <!-- GALLERIA 5x4 2:3 -->
@@ -89,7 +90,7 @@ galleryImages.forEach((img, idx)=> img.addEventListener('click', ()=> showLightb
 closeBtn.addEventListener('click', ()=> lightbox.style.display='none');
 lightbox.addEventListener('click', e=>{ if(e.target===lightbox) lightbox.style.display='none'; });
 
-// navigazione frecce tramite tastiera
+// navigazione tastiera
 document.addEventListener('keydown', e=>{
   if(lightbox.style.display==='flex'){
     if(e.key==='ArrowRight') {
@@ -101,6 +102,22 @@ document.addEventListener('keydown', e=>{
       showLightbox(currentIndex);
     }
     if(e.key==='Escape') lightbox.style.display='none';
+  }
+});
+
+// SWIPE TOUCH per mobile
+let startX = 0;
+lightboxImg.addEventListener('touchstart', e=> {
+  startX = e.touches[0].clientX;
+});
+lightboxImg.addEventListener('touchend', e=> {
+  let endX = e.changedTouches[0].clientX;
+  if (endX - startX > 50) { // swipe destra
+    currentIndex = (currentIndex-1+galleryImages.length) % galleryImages.length;
+    showLightbox(currentIndex);
+  } else if (startX - endX > 50) { // swipe sinistra
+    currentIndex = (currentIndex+1) % galleryImages.length;
+    showLightbox(currentIndex);
   }
 });
 </script>

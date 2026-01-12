@@ -14,9 +14,10 @@ body {
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 60px 20px;
 }
 
 /* TITOLI */
@@ -98,11 +99,12 @@ h1 {
   background: rgba(11,11,11,0.95);
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 #lightbox img.lightbox-img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 95%;
+  max-height: 95%;
   display: block;
   opacity: 0;
   animation: fadeIn 0.3s forwards;
@@ -116,9 +118,9 @@ h1 {
 #lightbox .close {
   position: absolute;
   top: 20px;
-  right: 40px;
+  right: 20px;
   color: #f5e400;
-  font-size: 40px;
+  font-size: 35px;
   cursor: pointer;
 }
 
@@ -151,8 +153,8 @@ a:hover { opacity: 0.7; }
 }
 @media (max-width: 600px) { 
   .gallery { grid-template-columns: repeat(2, 1fr); }
-  .container { padding: 60px 15px; }
+  .container { padding: 40px 15px; }
   h1 { font-size: 24px; }
   p.description { font-size: 14px; }
-  #lightbox .close { font-size: 30px; top: 10px; right: 20px; }
+  #lightbox .close { font-size: 30px; top: 10px; right: 15px; }
 }
