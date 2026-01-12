@@ -1,116 +1,109 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>helya</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>helya</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>HELYA</h1>
+  <h1>helya</h1>
 
-    <p>
-      ongoing research<br><br>
-      This section collects fragments,
-      observations and partial structures.
-      <br><br>
-      Images are treated as records,
-      not conclusions.
-    </p>
+  <!-- GALLERIA 5x4 2:3 -->
+  <div class="gallery" id="gallery"></div>
 
-    <div class="separator"></div>
-
-    <div class="image">
-      <img src="img/1.jpg" alt="">
-    </div>
-
-    <div class="image">
-      <img src="img/2.jpg" alt="">
-    </div>
-
-    <div class="image">
-      <img src="img/3.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/4.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/5.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/6.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/7.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/8.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/9.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/10.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/11.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/12.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/13.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/14.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/15.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/16.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/17.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/18.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/19.jpg" alt="">
-    </div>
-
-     <div class="image">
-      <img src="img/20.jpg" alt="">
-    </div>
-
-    <div class="nav">
-      <a href="index.html">← back to archive</a>
-    </div>
-
-    <div class="footer">
-      section active
-    </div>
-
+  <!-- VIDEO POV -->
+  <div class="image">
+    <video autoplay loop muted playsinline>
+      <source src="video/pov_01.mp4" type="video/mp4">
+    </video>
   </div>
+
+  <div class="separator"></div>
+
+  <!-- TESTO Helya SOTTO -->
+ <p class="description">
+    helya is trapped in a inner struggle, she feels responsible for lylias’ death caused by a car accident. the
+    subjects in the images embody her obsessive thoughts and fears, projections of relentless emotional tur-
+    moil, shadows that mock and confuse her. the project explores the concept of camouflage as a strategy for psychological and emotional survival.
+  </p>
+  <p class="description">
+    starting from the effects of survivor’s guilt, it reflects on the fragmentation of identity and the need to hide not only from others but also from oneself.
+  </p>
+  <p class="description">
+    two opposing landscapes, two modes of dissolution:
+    </p>
+  <p class="description">
+    the nocturnal forest, a space of concealment and evanescence. figures, dressed in camo clothings, merge into the darkness. camouflage becomes both protection and prison, leaving behind only traces, silhouettes, fleeting presences.
+  </p>
+  </p>
+  <p class="description">
+    the snowy landscape: here, camouflage reaches another level. the snow acts as a covering agent, erasing and unifying. the subjects, veiled in white, are absorbed by the syndrome’s distorted perception. reality fractures, becoming foggy and uncertain.
+  </p>
+  <p class="description">
+    but did lylias ever truly exist? or is she merely a projection of helya’s psyche?
+  </p>
+
+
+  <div class="footer">
+    section active
+  </div>
+
+</div>
+
+<!-- LIGHTBOX SENZA FRECCE -->
+<div id="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-img" src="">
+</div>
+
+<script>
+// genera immagini 1-20
+const gallery = document.getElementById('gallery');
+const totalImages = 20;
+for (let i=1; i<=totalImages; i++){
+  const img = document.createElement('img');
+  img.src = `img/${i}.jpg`;
+  img.alt = `helya ${i}`;
+  gallery.appendChild(img);
+}
+
+// lightbox
+const galleryImages = document.querySelectorAll('.gallery img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-img');
+const closeBtn = document.querySelector('.close');
+let currentIndex = 0;
+
+function showLightbox(index){
+  currentIndex = index;
+  lightbox.style.display='flex';
+  lightboxImg.style.opacity=0;
+  lightboxImg.src = galleryImages[index].src;
+  setTimeout(()=> lightboxImg.style.opacity=1, 10);
+}
+
+galleryImages.forEach((img, idx)=> img.addEventListener('click', ()=> showLightbox(idx)));
+closeBtn.addEventListener('click', ()=> lightbox.style.display='none');
+lightbox.addEventListener('click', e=>{ if(e.target===lightbox) lightbox.style.display='none'; });
+
+// navigazione frecce tramite tastiera
+document.addEventListener('keydown', e=>{
+  if(lightbox.style.display==='flex'){
+    if(e.key==='ArrowRight') {
+      currentIndex = (currentIndex+1) % galleryImages.length;
+      showLightbox(currentIndex);
+    }
+    if(e.key==='ArrowLeft') {
+      currentIndex = (currentIndex-1+galleryImages.length) % galleryImages.length;
+      showLightbox(currentIndex);
+    }
+    if(e.key==='Escape') lightbox.style.display='none';
+  }
+});
+</script>
 
 </body>
 </html>
